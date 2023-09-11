@@ -32,7 +32,8 @@ en_label.place(x=500,y=200)
 output_text = ttk.Text(wrap=WORD,height=10,width=25)
 output_text.place(x=500,y=250)
 
-
+translate_btn = ttk.Button(text="Translate", bootstyle="success")
+translate_btn.place(x=380,y=600)
 
 
 root.mainloop()
