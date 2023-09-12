@@ -40,13 +40,13 @@ output_text.place(x=500,y=250)
 
 search_img = ttk.PhotoImage(file="search_logo.png")
 translate_btn = ttk.Button(text="Translate",image=search_img,compound=LEFT, bootstyle="success",command=translate)
-translate_btn.place(x=380,y=600)
+translate_btn.place(x=380,y=650)
 
 
-# image = ttk.PhotoImage(file="voice_logo.png")
-# voice_image = image.subsample(1,1)
-# voice_btn = ttk.Button(image=voice_image)
-# voice_btn.place(x=500,y=280)
+image = ttk.PhotoImage(file="voice_logo.png")
+voice_image = image.subsample(1,1)
+voice_btn = ttk.Button(image=voice_image,bootstyle="success")
+voice_btn.place(x=500,y=580)
 
 
 root.mainloop()
