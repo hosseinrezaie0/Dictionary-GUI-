@@ -1,12 +1,15 @@
 #Import Modules
-import googletrans
+from googletrans import Translator
 import pyttsx3
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import pyperclip
-
-
-
+#-----------------------------------Translate-----------------------------------#
+def translate():
+    inp = input_text.get("1.0",END)
+    tr = Translator()
+    translation = tr.translate(text=inp,src="de",dest="en")
+    output_text.insert("end-1c", translation.text)
 #-----------------------------------UI-----------------------------------#
 root = ttk.Window(themename="superhero")
 root.title("Dictionary")
@@ -32,7 +35,7 @@ en_label.place(x=500,y=200)
 output_text = ttk.Text(wrap=WORD,height=10,width=25)
 output_text.place(x=500,y=250)
 
-translate_btn = ttk.Button(text="Translate", bootstyle="success")
+translate_btn = ttk.Button(text="Translate", bootstyle="success",command=translate)
 translate_btn.place(x=380,y=600)
 
 
