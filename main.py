@@ -12,7 +12,9 @@ def translate():
     output_text.insert("end-1c", translation.text)
 #-----------------------------------Voice-----------------------------------#
 def play_adiuo():
-    pass
+    voice = pyttsx3.init()
+    voice.say(output_text.get("1.0",END))
+    voice.runAndWait()
 #-----------------------------------UI-----------------------------------#
 root = ttk.Window(themename="superhero")
 root.title("Dictionary")
@@ -45,7 +47,7 @@ translate_btn.place(x=380,y=650)
 
 image = ttk.PhotoImage(file="voice_logo.png")
 voice_image = image.subsample(1,1)
-voice_btn = ttk.Button(image=voice_image,bootstyle="success")
+voice_btn = ttk.Button(image=voice_image,bootstyle="success",command=play_adiuo)
 voice_btn.place(x=500,y=580)
 
 
