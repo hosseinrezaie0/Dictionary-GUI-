@@ -10,11 +10,14 @@ def translate():
     tr = Translator()
     translation = tr.translate(text=inp,src="de",dest="en")
     output_text.insert("end-1c", translation.text)
+#-----------------------------------Voice-----------------------------------#
+def play_adiuo():
+    pass
 #-----------------------------------UI-----------------------------------#
 root = ttk.Window(themename="superhero")
 root.title("Dictionary")
 root.geometry("870x700")
-root.resizable(0,0)
+# root.resizable(0,0)
 # root.config(padx=50)
 
 # label = ttk.Label(text="German to English",font=("Arial",25))
@@ -35,8 +38,15 @@ en_label.place(x=500,y=200)
 output_text = ttk.Text(wrap=WORD,height=10,width=25)
 output_text.place(x=500,y=250)
 
-translate_btn = ttk.Button(text="Translate", bootstyle="success",command=translate)
+search_img = ttk.PhotoImage(file="search_logo.png")
+translate_btn = ttk.Button(text="Translate",image=search_img,compound=LEFT, bootstyle="success",command=translate)
 translate_btn.place(x=380,y=600)
+
+
+# image = ttk.PhotoImage(file="voice_logo.png")
+# voice_image = image.subsample(1,1)
+# voice_btn = ttk.Button(image=voice_image)
+# voice_btn.place(x=500,y=280)
 
 
 root.mainloop()
