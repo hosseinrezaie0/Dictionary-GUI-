@@ -16,6 +16,10 @@ def play_audio():
     voice = pyttsx3.init()
     voice.say(output_text.get("1.0",END))
     voice.runAndWait()
+#-----------------------------------Copy-----------------------------------#
+def copy():
+    text = output_text.get("1.0",END)
+    pyperclip.copy(text=text)
 #-----------------------------------UI-----------------------------------#
 root = ttk.Window(themename="cosmo")
 root.title("Translator")
@@ -53,7 +57,7 @@ voice_btn.place(x=500,y=580)
 
 #copy to clipboard
 copy_image = ttk.PhotoImage(file="copy_logo.png")
-copy_btn = ttk.Button(image=copy_image,bootstyle="primary")
+copy_btn = ttk.Button(image=copy_image,bootstyle="primary",command=copy)
 copy_btn.place(x=570,y=580)
 
 root.mainloop()
