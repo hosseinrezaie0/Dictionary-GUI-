@@ -18,7 +18,7 @@ def play_audio():
     voice.runAndWait()
 #-----------------------------------UI-----------------------------------#
 root = ttk.Window(themename="cosmo")
-root.title("Dictionary")
+root.title("Translator")
 root.geometry("870x700")
 # root.resizable(0,0)
 # root.config(padx=50)
