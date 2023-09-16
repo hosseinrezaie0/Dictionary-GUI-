@@ -4,13 +4,20 @@ import pyttsx3
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import pyperclip
+from tkinter import messagebox
 #-----------------------------------Translate-----------------------------------#
 def translate():
     output_text.delete("1.0",END)
     inp = input_text.get("1.0",END)
     tr = Translator()
-    translation = tr.translate(text=inp,src="de",dest="en")
-    output_text.insert("end-1c", translation.text)
+    try:
+        translation = tr.translate(text=inp,src=input_lang.get(),dest=output_lang.get())
+        output_text.insert("end-1c", translation.text)
+    except ValueError:
+        messagebox.showerror(title="error", message="Choose a language")
+    except IndexError:
+        messagebox.showerror(title="error", message="Nothing to translate")
+    
 #-----------------------------------Voice-----------------------------------#
 def play_audio():
     voice = pyttsx3.init()
@@ -35,13 +42,20 @@ file = ttk.PhotoImage(file="logo.png")
 canavs.create_image(128,128,image=file)
 canavs.place(x=0,y=0)
 
-du_label = ttk.Label(text="German",width=50)
-du_label.place(x=50,y=200)
+
+input_lang = ttk.Combobox(width=23)
+input_lang['values'] = ("German", "English")
+input_lang.set("Choose language")
+input_lang['state'] = "readonly"
+input_lang.place(x=50,y=200)
 input_text = ttk.Text(wrap=ttk.WORD,height=10,width=25)
 input_text.place(x=50,y=250)
 
-en_label = ttk.Label(text="English")
-en_label.place(x=500,y=200)
+output_lang = ttk.Combobox(width=23)
+output_lang['values'] = ("German", "English")
+output_lang.set("Choose language")
+output_lang['state'] = "readonly"
+output_lang.place(x=500,y=200)
 output_text = ttk.Text(wrap=WORD,height=10,width=25)
 output_text.place(x=500,y=250)
 
